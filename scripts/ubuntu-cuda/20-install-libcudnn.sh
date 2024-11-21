@@ -16,8 +16,6 @@ done
 
 UBUNTU_RELEASE=$(lsb_release -rs) # 18.04
 DISTRO=ubuntu${UBUNTU_RELEASE//\./} # ubuntu1804
-cuda_version="cuda12.0"
-cudnn_version="8.8.1.*"
 
 wget https://developer.download.nvidia.com/compute/cuda/repos/${DISTRO}/x86_64/cuda-${DISTRO}.pin 
 
@@ -26,5 +24,5 @@ sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda
 sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/${DISTRO}/x86_64/ /"
 sudo apt-get update
 
-sudo apt-get install libcudnn8=${cudnn_version}-1+${cuda_version}
-sudo apt-get install libcudnn8-dev=${cudnn_version}-1+${cuda_version}
+sudo apt-get -y install cudnn9-cuda-12
+sudo apt-get -y install libcudnn9-dev-cuda-12
